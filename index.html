@@ -84,6 +84,8 @@
       border: 1px solid rgba(212, 175, 55, 0.3);
       color: var(--gold);
       font-weight: 900;
+      font-size: 20px;
+      flex-shrink: 0;
     }
 
     .logo-box img {
@@ -763,7 +765,7 @@
         <div class="logo-box" id="logoBox">SA</div>
         <div>
           <div class="brand-title" id="brandName">SA VISUALS</div>
-          <div class="brand-sub">Creative Graphic Design Studio</div>
+          <div class="brand-sub">CREATIVE GRAPHIC DESIGN STUDIO</div>
         </div>
       </div>
 
@@ -1004,7 +1006,7 @@
 
     const defaultSiteSettings = {
       brandName: "SA VISUALS",
-      logoImage: "https://i.ibb.co/placeholder/logo.png",
+      logoImage: "",
       shortDescription: "SA VISUALS creates clean, professional and modern graphic designs for businesses, personal brands and growing startups. From logos to social media designs, every visual is made to leave a strong impression.",
       aboutTitle: "Professional design solutions for growing brands",
       aboutText1: "SA VISUALS is a creative graphic design brand based in Malwana, Sri Lanka. The studio focuses on building clean, professional and visually strong designs for businesses, startups and personal brands.",
@@ -1148,8 +1150,8 @@
       setText("contactCall", settings.callNumber);
 
       const insta = document.getElementById("instagramLink");
-      insta.href = settings.instagramLink;
-      insta.textContent = settings.instagramText;
+      insta.href = settings.instagramLink || "#";
+      insta.textContent = settings.instagramText || "";
 
       const whatsappLink = createWhatsappLink(settings);
       document.getElementById("heroWhatsappBtn").href = whatsappLink;
@@ -1159,7 +1161,7 @@
       document.getElementById("footerText").textContent = `© 2026 ${settings.brandName}. All rights reserved.`;
 
       const logoBox = document.getElementById("logoBox");
-      if (settings.logoImage) {
+      if (settings.logoImage && settings.logoImage.trim() !== "") {
         logoBox.innerHTML = `<img src="${settings.logoImage}" alt="Logo" onerror="this.parentElement.innerHTML='SA'">`;
       } else {
         logoBox.textContent = "SA";
@@ -1177,7 +1179,7 @@
         const id = doc.id;
 
         container.innerHTML += `
-          <div class="service-card reveal active">
+          <div class="service-card reveal">
             <div class="service-image-wrap">
               <img src="${service.image}" alt="${service.title}" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
             </div>
@@ -1199,6 +1201,8 @@
           </div>
         `;
       });
+
+      observeReveals();
     });
 
     db.collection("portfolio").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
@@ -1212,7 +1216,7 @@
         const id = doc.id;
 
         container.innerHTML += `
-          <div class="portfolio-card reveal active">
+          <div class="portfolio-card reveal">
             <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
             <div class="portfolio-content">
               <div class="portfolio-category">${item.category}</div>
@@ -1233,6 +1237,8 @@
           </div>
         `;
       });
+
+      observeReveals();
     });
 
     db.collection("testimonials").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
@@ -1242,12 +1248,14 @@
       snapshot.forEach((doc) => {
         const item = doc.data();
         container.innerHTML += `
-          <div class="testimonial-card reveal active">
+          <div class="testimonial-card reveal">
             <p>“${item.text}”</p>
             <h4>${item.name}</h4>
           </div>
         `;
       });
+
+      observeReveals();
     });
 
     document.getElementById("logoForm").addEventListener("submit", async function(e) {
@@ -1371,7 +1379,8 @@
         }
 
         showStatus("adminGlobalStatus", "Default data loaded");
-      } catch {
+      } catch (e) {
+        console.error(e);
         showStatus("adminGlobalStatus", "Default load failed", "error");
       }
     }
@@ -1397,7 +1406,26 @@
       window.open(`https://wa.me/${settings.whatsappNumber}?text=${formMessage}`, "_blank");
     });
 
-    updateAdminUI();
+    function observeReveals() {
+      const items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach(el => el.classList.add("active"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("active");
+        });
+      }, { threshold: 0.08 });
+
+      items.forEach((el) => observer.observe(el));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateAdminUI();
+      observeReveals();
+    });
   </script>
 </body>
 </html>
