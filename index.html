@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SA VISUALS | Creative Graphic Design Studio</title>
+  <meta
+    name="description"
+    content="SA VISUALS is a creative graphic design studio based in Malwana, Sri Lanka."
+  />
+  <style>
+    :root {
+      --bg: #060606;
+      --card: rgba(17, 17, 17, 0.95);
+      --text: #ffffff;
+      --muted: #bdbdbd;
+      --gold: #d4af37;
+      --border: rgba(212, 175, 55, 0.22);
+      --shadow: 0 15px 45px rgba(212, 175, 55, 0.08);
+      --radius: 24px;
+      --transition: 0.35s ease;
+      --max: 1200px;
+      --danger: #ff5c5c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 22%),
+        linear-gradient(180deg, #080808 0%, #030303 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(90%, var(--max));
+      margin: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-title {
+      color: var(--gold);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      color: #8e8e8e;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: #ebebeb;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .menu a:hover {
+      color: var(--gold);
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 70px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    }
+
+    .glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.16), transparent 60%);
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: 0;
+      animation: floatGlow 7s ease-in-out infinite;
+    }
+
+    .glow.one { top: -80px; left: -80px; }
+    .glow.two { right: -100px; bottom: 0; animation-delay: 1.5s; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.24);
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.95;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-size: 15px;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #e5c35a, #d4af37);
+      color: #000;
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.18);
+    }
+
+    .btn-primary:hover { transform: translateY(-3px); }
+
+    .btn-secondary {
+      color: var(--gold);
+      border-color: rgba(212, 175, 55, 0.32);
+      background: rgba(212, 175, 55, 0.03);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    .btn-danger {
+      background: rgba(255, 92, 92, 0.12);
+      border-color: rgba(255, 92, 92, 0.35);
+      color: #ff8d8d;
+    }
+
+    .btn-danger:hover { transform: translateY(-2px); }
+
+    .btn-small {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .hero-card,
+    .service-card,
+    .portfolio-card,
+    .testimonial-card,
+    .contact-form,
+    .admin-panel,
+    .login-box,
+    .stat-box {
+      background: linear-gradient(180deg, rgba(17, 17, 17, 0.95), rgba(10, 10, 10, 0.95));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .hero-card { padding: 30px; }
+
+    .hero-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .hero-head p {
+      color: #8f8f8f;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .hero-head h3 {
+      color: var(--gold);
+      font-size: 30px;
+      margin-top: 8px;
+    }
+
+    .hero-pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      color: var(--gold);
+      font-size: 12px;
+      background: rgba(212, 175, 55, 0.05);
+      white-space: nowrap;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .mini-card.full { grid-column: 1 / -1; }
+
+    .mini-card .small {
+      font-size: 13px;
+      color: #8e8e8e;
+      margin-bottom: 9px;
+    }
+
+    .mini-card .big {
+      font-size: 17px;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .section { padding: 90px 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title.left {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .section-title p {
+      color: var(--gold);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      line-height: 1.2;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .about-left h3,
+    .contact-left h3 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .about-left p,
+    .contact-left p {
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-box { padding: 24px; }
+
+    .stat-box h4 {
+      color: var(--gold);
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .stat-box.full { grid-column: 1 / -1; }
+
+    .services-section,
+    .testimonials-section,
+    .admin-section {
+      background:
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.04), transparent 35%),
+        #090909;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    }
+
+    .service-card,
+    .testimonial-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .service-card:hover,
+    .testimonial-card:hover,
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.52);
+    }
+
+    .service-image-wrap {
+      width: 100%;
+      height: 210px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      border: 1px solid rgba(212, 175, 55, 0.14);
+      background: #000;
+    }
+
+    .service-image-wrap img,
+    .portfolio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-card h3 {
+      color: var(--gold);
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .service-card p,
+    .testimonial-card p {
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .service-price {
+      margin-top: 18px;
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .portfolio-card {
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .portfolio-card img {
+      height: 250px;
+      transition: transform 0.7s ease;
+    }
+
+    .portfolio-card:hover img { transform: scale(1.08); }
+
+    .portfolio-content { padding: 20px; }
+
+    .portfolio-category {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .portfolio-content h4 {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .testimonial-card h4 {
+      color: var(--gold);
+      margin-top: 18px;
+      font-size: 20px;
+    }
+
+    .contact-info { margin-top: 24px; }
+
+    .contact-info p {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .contact-info span {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .contact-form,
+    .admin-panel,
+    .login-box {
+      padding: 28px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .admin-panel input,
+    .admin-panel textarea,
+    .login-box input {
+      width: 100%;
+      padding: 15px 16px;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      border: 1px solid #2c2c2c;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .admin-panel input:focus,
+    .admin-panel textarea:focus,
+    .login-box input:focus {
+      border-color: rgba(212, 175, 55, 0.65);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.08);
+    }
+
+    .contact-info a { color: var(--muted); }
+    .contact-info a:hover { color: var(--gold); }
+
+    .admin-section { display: none; }
+    .admin-section.active { display: block; }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .admin-panel h3 {
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .admin-help {
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .admin-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .admin-item {
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .admin-item-info strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .admin-item-info span {
+      color: var(--muted);
+      font-size: 13px;
+      word-break: break-word;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .status-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .status-box.show { display: block; }
+
+    .status-success {
+      background: rgba(52, 199, 89, 0.12);
+      color: #7cf4a0;
+      border: 1px solid rgba(52, 199, 89, 0.25);
+    }
+
+    .status-error {
+      background: rgba(255, 92, 92, 0.12);
+      color: #ff9f9f;
+      border: 1px solid rgba(255, 92, 92, 0.25);
+    }
+
+    .login-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-modal.show { display: flex; }
+
+    .login-box {
+      width: min(100%, 420px);
+    }
+
+    .login-box h3 {
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    .login-box p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+      color: #8d8d8d;
+      text-align: center;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      background: linear-gradient(180deg, #e5c35a, #d4af37);
+      color: #000;
+      padding: 15px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 14px 34px rgba(212, 175, 55, 0.22);
+      animation: pulseBtn 2.2s infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden { display: none !important; }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(22px) translateX(12px); }
+    }
+
+    @keyframes pulseBtn {
+      0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.35), 0 14px 34px rgba(212,175,55,0.22); }
+      70% { box-shadow: 0 0 0 16px rgba(212,175,55,0), 0 14px 34px rgba(212,175,55,0.22); }
+      100% { box-shadow: 0 0 0 0 rgba(212,175,55,0), 0 14px 34px rgba(212,175,55,0.22); }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .admin-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero h1 { font-size: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      .menu { display: none; }
+      .hero { min-height: auto; padding: 85px 0 60px; }
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .mini-grid,
+      .stats,
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+      .mini-card.full,
+      .stat-box.full {
+        grid-column: auto;
+      }
+      .hero h1 { font-size: 35px; }
+      .section-title h2,
+      .about-left h3,
+      .contact-left h3 {
+        font-size: 29px;
+      }
+      .hero-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brand-title { font-size: 20px; }
+      .section { padding: 72px 0; }
+      .admin-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-modal" id="loginModal">
+    <div class="login-box">
+      <h3>Admin Mode</h3>
+      <p>Use password to open admin controls.</p>
+      <form id="adminLoginForm">
+        <input type="password" id="adminPassword" placeholder="Enter admin password" required />
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:10px;">Login</button>
+        <button type="button" class="btn btn-secondary" style="width:100%;" onclick="closeAdminLogin()">Close</button>
+      </form>
+      <div id="loginStatus" class="status-box"></div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo-box" id="logoBox">SA</div>
+        <div>
+          <div class="brand-title" id="brandName">SA VISUALS</div>
+          <div class="brand-sub">Creative Graphic Design Studio</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="top-actions">
+        <button id="openAdminBtn" class="btn btn-secondary btn-small" onclick="openAdminLogin()">Admin Mode</button>
+        <button id="logoutAdminBtn" class="btn btn-danger btn-small hidden" onclick="logoutAdmin()">Logout Admin</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">Creative • Clean • Premium</div>
+        <h1>Creative visuals that make your <span>brand stand out</span></h1>
+        <p id="shortDescription"></p>
+
+        <div class="hero-buttons">
+          <a id="heroWhatsappBtn" class="btn btn-primary" target="_blank">Chat on WhatsApp</a>
+          <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-head">
+          <div>
+            <p>Featured Brand</p>
+            <h3 id="heroBrandName">SA VISUALS</h3>
+          </div>
+          <div class="hero-pill">Sri Lanka</div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="small">Specialized In</div>
+            <div class="big">Logo & Visual Branding</div>
+          </div>
+          <div class="mini-card">
+            <div class="small">Creative Focus</div>
+            <div class="big">Social Media & Print Design</div>
+          </div>
+          <div class="mini-card full">
+            <div class="small">Design Style</div>
+            <div class="big">Clean layouts, premium presentation and modern black-and-gold branding style.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="about">
+    <div class="container grid-2">
+      <div class="about-left">
+        <div class="section-title left">
+          <p>About Studio</p>
+        </div>
+        <h3 id="aboutTitle"></h3>
+        <p id="aboutText1"></p>
+        <p id="aboutText2"></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-box">
+          <h4>Creative</h4>
+          <p>Modern design ideas for brands, marketing and promotions.</p>
+        </div>
+        <div class="stat-box">
+          <h4>Direct</h4>
+          <p>WhatsApp contact for quick client communication.</p>
+        </div>
+        <div class="stat-box full">
+          <h4 style="font-size:22px; color:#fff;">Studio Tools</h4>
+          <p>Adobe Photoshop • Adobe Illustrator • Canva</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section reveal" id="services">
+    <div class="container">
+      <div class="section-title">
+        <p>Services</p>
+        <h2>Services by SA VISUALS</h2>
+      </div>
+      <div class="grid-3" id="servicesContainer"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <p>Portfolio</p>
+        <h2>Selected design showcase</h2>
+      </div>
+      <div class="grid-4" id="portfolioContainer"></div>
+    </div>
+  </section>
+
+  <section class="section testimonials-section reveal">
+    <div class="container">
+      <div class="section-title">
+        <p>Testimonials</p>
+        <h2>Client impressions</h2>
+      </div>
+      <div class="grid-3" id="testimonialsContainer"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="contact">
+    <div class="container grid-2">
+      <div class="contact-left">
+        <div class="section-title left">
+          <p>Contact</p>
+        </div>
+        <h3>Let’s build your next design project</h3>
+        <p>
+          Need a logo, social media design, poster, flyer or full branding support?
+          Contact SA VISUALS directly and start your project quickly through WhatsApp,
+          phone or email.
+        </p>
+
+        <div class="contact-info">
+          <p><span>Brand:</span> <span id="contactBrand" style="color:#cfcfcf; font-weight:normal;"></span></p>
+          <p><span>Email:</span> <span id="contactEmail" style="color:#cfcfcf; font-weight:normal;"></span></p>
+          <p><span>Location:</span> <span id="contactLocation" style="color:#cfcfcf; font-weight:normal;"></span></p>
+          <p><span>WhatsApp:</span> <span id="contactWhatsapp" style="color:#cfcfcf; font-weight:normal;"></span></p>
+          <p><span>Call:</span> <span id="contactCall" style="color:#cfcfcf; font-weight:normal;"></span></p>
+          <p><span>Instagram:</span> <a id="instagramLink" href="#" target="_blank" rel="noreferrer"></a></p>
+        </div>
+
+        <div style="margin-top:24px;">
+          <a id="contactWhatsappBtn" class="btn btn-primary" target="_blank">Contact on WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email Address" required />
+          <input type="text" id="service" placeholder="Service Needed" required />
+          <textarea id="message" rows="5" placeholder="Tell us about your project" required></textarea>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Inquiry to WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section admin-section" id="adminSection">
+    <div class="container">
+      <div class="section-title">
+        <p>Admin</p>
+        <h2>Website Admin Mode</h2>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-panel">
+          <h3>Change Logo by URL</h3>
+          <p class="admin-help">Paste imgbb direct link or Google Drive thumbnail link.</p>
+          <form id="logoForm">
+            <input type="text" id="logoUrl" placeholder="Paste logo image URL" />
+            <button type="submit" class="btn btn-primary" style="width:100%;">Update Logo</button>
+          </form>
+          <div id="logoStatus" class="status-box"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3>Admin Controls</h3>
+          <p class="admin-help">All changes save to Firebase and update live for everyone.</p>
+          <button class="btn btn-danger" onclick="seedDefaults()">Load Default Data</button>
+          <div id="adminGlobalStatus" class="status-box"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3>Add Portfolio Item</h3>
+          <form id="portfolioForm">
+            <input type="text" id="portfolioTitle" placeholder="Portfolio title" />
+            <input type="text" id="portfolioCategory" placeholder="Category" />
+            <input type="text" id="portfolioImageUrl" placeholder="Portfolio image URL" />
+            <button type="submit" class="btn btn-primary" style="width:100%;">Add Portfolio</button>
+          </form>
+          <div id="portfolioStatus" class="status-box"></div>
+          <div class="admin-list" id="adminPortfolioList"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3>Add Service with Display Image</h3>
+          <form id="serviceForm">
+            <input type="text" id="serviceTitle" placeholder="Service title" />
+            <textarea id="serviceDescription" rows="4" placeholder="Service description"></textarea>
+            <input type="text" id="servicePrice" placeholder="Service price e.g. Starting from LKR 2,500" />
+            <input type="text" id="serviceImageUrl" placeholder="Service display image URL" />
+            <button type="submit" class="btn btn-primary" style="width:100%;">Add Service</button>
+          </form>
+          <div id="serviceStatus" class="status-box"></div>
+          <div class="admin-list" id="adminServiceList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p id="footerText"></p>
+    </div>
+  </footer>
+
+  <a id="floatingWhatsapp" class="floating-whatsapp" target="_blank">WhatsApp</a>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyADwWl_45-UpZg7g4UVSpjFWtkZVu-73CE",
+      authDomain: "sa-visuals-website.firebaseapp.com",
+      projectId: "sa-visuals-website",
+      storageBucket: "sa-visuals-website.firebasestorage.app",
+      messagingSenderId: "479243177446",
+      appId: "1:479243177446:web:b96e3d85ec6da71b155a27",
+      measurementId: "G-67GLC85MNJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const ADMIN_PASSWORD = "savisuals123";
+
+    const defaultSiteSettings = {
+      brandName: "SA VISUALS",
+      logoImage: "https://i.ibb.co/placeholder/logo.png",
+      shortDescription: "SA VISUALS creates clean, professional and modern graphic designs for businesses, personal brands and growing startups. From logos to social media designs, every visual is made to leave a strong impression.",
+      aboutTitle: "Professional design solutions for growing brands",
+      aboutText1: "SA VISUALS is a creative graphic design brand based in Malwana, Sri Lanka. The studio focuses on building clean, professional and visually strong designs for businesses, startups and personal brands.",
+      aboutText2: "This website is built to showcase design work in a clear and professional way. Visitors can explore the work, understand the services and directly contact SA VISUALS through WhatsApp for fast communication and project inquiries.",
+      whatsappNumber: "94775498842",
+      whatsappDisplay: "0775498842",
+      callNumber: "0777542002",
+      email: "shazeen2026@gmail.com",
+      location: "SA VISUALS, Malwana, Sri Lanka",
+      instagramText: "@sa_visuals",
+      instagramLink: "https://instagram.com/",
+      whatsappMessage: "Hi SA VISUALS, I want a design for my business."
+    };
+
+    const defaultServices = [
+      {
+        title: "Logo Design",
+        description: "Modern, memorable and professional logo designs crafted for businesses and personal brands.",
+        price: "Starting from LKR 4,000",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Social Media Post Design",
+        description: "Creative and eye-catching post designs for Instagram, Facebook and business promotions.",
+        price: "Starting from LKR 800",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Poster Design",
+        description: "Clean and impactful promotional poster designs for events and businesses.",
+        price: "Starting from LKR 3,000",
+        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+      }
+    ];
+
+    const defaultPortfolio = [
+      {
+        title: "Logo Design Project",
+        category: "Logo Design",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Social Media Design",
+        category: "Social Media Design",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Poster Design Project",
+        category: "Poster Design",
+        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Brand Identity Project",
+        category: "Branding",
+        image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80"
+      }
+    ];
+
+    const defaultTestimonials = [
+      {
+        name: "Brand Client",
+        text: "Professional work, clean communication and a design style that made our brand look premium."
+      },
+      {
+        name: "Business Owner",
+        text: "SA VISUALS created beautiful designs with a modern feel. The final result looked very polished."
+      },
+      {
+        name: "Social Media Client",
+        text: "Creative, fast and professional. The designs were eye-catching and matched the brand perfectly."
+      }
+    ];
+
+    let isAdmin = sessionStorage.getItem("sa_visuals_admin_live") === "true";
+
+    function showStatus(id, message, type = "success") {
+      const box = document.getElementById(id);
+      box.className = "status-box show " + (type === "success" ? "status-success" : "status-error");
+      box.textContent = message;
+      setTimeout(() => box.classList.remove("show"), 2500);
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value || "";
+    }
+
+    function createWhatsappLink(settings) {
+      return `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(settings.whatsappMessage)}`;
+    }
+
+    function updateAdminUI() {
+      document.getElementById("adminSection").classList.toggle("active", isAdmin);
+      document.getElementById("openAdminBtn").classList.toggle("hidden", isAdmin);
+      document.getElementById("logoutAdminBtn").classList.toggle("hidden", !isAdmin);
+    }
+
+    function openAdminLogin() {
+      document.getElementById("loginModal").classList.add("show");
+    }
+
+    function closeAdminLogin() {
+      document.getElementById("loginModal").classList.remove("show");
+    }
+
+    function logoutAdmin() {
+      isAdmin = false;
+      sessionStorage.removeItem("sa_visuals_admin_live");
+      updateAdminUI();
+    }
+
+    document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const password = document.getElementById("adminPassword").value.trim();
+      if (password === ADMIN_PASSWORD) {
+        isAdmin = true;
+        sessionStorage.setItem("sa_visuals_admin_live", "true");
+        document.getElementById("adminPassword").value = "";
+        closeAdminLogin();
+        updateAdminUI();
+        document.getElementById("adminSection").scrollIntoView({ behavior: "smooth" });
+      } else {
+        showStatus("loginStatus", "Wrong password", "error");
+      }
+    });
+
+    db.collection("settings").doc("main").onSnapshot((doc) => {
+      const settings = doc.exists ? doc.data() : defaultSiteSettings;
+
+      setText("brandName", settings.brandName);
+      setText("heroBrandName", settings.brandName);
+      setText("shortDescription", settings.shortDescription);
+      setText("aboutTitle", settings.aboutTitle);
+      setText("aboutText1", settings.aboutText1);
+      setText("aboutText2", settings.aboutText2);
+
+      setText("contactBrand", settings.brandName);
+      setText("contactEmail", settings.email);
+      setText("contactLocation", settings.location);
+      setText("contactWhatsapp", settings.whatsappDisplay);
+      setText("contactCall", settings.callNumber);
+
+      const insta = document.getElementById("instagramLink");
+      insta.href = settings.instagramLink;
+      insta.textContent = settings.instagramText;
+
+      const whatsappLink = createWhatsappLink(settings);
+      document.getElementById("heroWhatsappBtn").href = whatsappLink;
+      document.getElementById("contactWhatsappBtn").href = whatsappLink;
+      document.getElementById("floatingWhatsapp").href = whatsappLink;
+
+      document.getElementById("footerText").textContent = `© 2026 ${settings.brandName}. All rights reserved.`;
+
+      const logoBox = document.getElementById("logoBox");
+      if (settings.logoImage) {
+        logoBox.innerHTML = `<img src="${settings.logoImage}" alt="Logo" onerror="this.parentElement.innerHTML='SA'">`;
+      } else {
+        logoBox.textContent = "SA";
+      }
+    });
+
+    db.collection("services").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
+      const container = document.getElementById("servicesContainer");
+      const adminList = document.getElementById("adminServiceList");
+      container.innerHTML = "";
+      adminList.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+        const service = doc.data();
+        const id = doc.id;
+
+        container.innerHTML += `
+          <div class="service-card reveal active">
+            <div class="service-image-wrap">
+              <img src="${service.image}" alt="${service.title}" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
+            </div>
+            <h3>${service.title}</h3>
+            <p>${service.description}</p>
+            <div class="service-price">${service.price}</div>
+          </div>
+        `;
+
+        adminList.innerHTML += `
+          <div class="admin-item">
+            <div class="admin-item-info">
+              <strong>${service.title}</strong>
+              <span>${service.price} • ${service.image}</span>
+            </div>
+            <div class="admin-actions">
+              <button class="btn btn-danger btn-small" onclick="deleteService('${id}')">Delete</button>
+            </div>
+          </div>
+        `;
+      });
+    });
+
+    db.collection("portfolio").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
+      const container = document.getElementById("portfolioContainer");
+      const adminList = document.getElementById("adminPortfolioList");
+      container.innerHTML = "";
+      adminList.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+        const item = doc.data();
+        const id = doc.id;
+
+        container.innerHTML += `
+          <div class="portfolio-card reveal active">
+            <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
+            <div class="portfolio-content">
+              <div class="portfolio-category">${item.category}</div>
+              <h4>${item.title}</h4>
+            </div>
+          </div>
+        `;
+
+        adminList.innerHTML += `
+          <div class="admin-item">
+            <div class="admin-item-info">
+              <strong>${item.title}</strong>
+              <span>${item.category} • ${item.image}</span>
+            </div>
+            <div class="admin-actions">
+              <button class="btn btn-danger btn-small" onclick="deletePortfolio('${id}')">Delete</button>
+            </div>
+          </div>
+        `;
+      });
+    });
+
+    db.collection("testimonials").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
+      const container = document.getElementById("testimonialsContainer");
+      container.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+        const item = doc.data();
+        container.innerHTML += `
+          <div class="testimonial-card reveal active">
+            <p>“${item.text}”</p>
+            <h4>${item.name}</h4>
+          </div>
+        `;
+      });
+    });
+
+    document.getElementById("logoForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const logoUrl = document.getElementById("logoUrl").value.trim();
+      if (!logoUrl) {
+        showStatus("logoStatus", "Enter logo URL", "error");
+        return;
+      }
+      try {
+        await db.collection("settings").doc("main").set({ logoImage: logoUrl }, { merge: true });
+        document.getElementById("logoForm").reset();
+        showStatus("logoStatus", "Logo updated");
+      } catch {
+        showStatus("logoStatus", "Logo update failed", "error");
+      }
+    });
+
+    document.getElementById("portfolioForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const title = document.getElementById("portfolioTitle").value.trim();
+      const category = document.getElementById("portfolioCategory").value.trim();
+      const image = document.getElementById("portfolioImageUrl").value.trim();
+
+      if (!title || !category || !image) {
+        showStatus("portfolioStatus", "Fill all portfolio fields", "error");
+        return;
+      }
+
+      try {
+        await db.collection("portfolio").add({
+          title,
+          category,
+          image,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        document.getElementById("portfolioForm").reset();
+        showStatus("portfolioStatus", "Portfolio added");
+      } catch {
+        showStatus("portfolioStatus", "Portfolio add failed", "error");
+      }
+    });
+
+    document.getElementById("serviceForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const title = document.getElementById("serviceTitle").value.trim();
+      const description = document.getElementById("serviceDescription").value.trim();
+      const price = document.getElementById("servicePrice").value.trim();
+      const image = document.getElementById("serviceImageUrl").value.trim();
+
+      if (!title || !description || !price || !image) {
+        showStatus("serviceStatus", "Fill all service fields", "error");
+        return;
+      }
+
+      try {
+        await db.collection("services").add({
+          title,
+          description,
+          price,
+          image,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        document.getElementById("serviceForm").reset();
+        showStatus("serviceStatus", "Service added");
+      } catch {
+        showStatus("serviceStatus", "Service add failed", "error");
+      }
+    });
+
+    async function deletePortfolio(id) {
+      try {
+        await db.collection("portfolio").doc(id).delete();
+        showStatus("portfolioStatus", "Portfolio deleted");
+      } catch {
+        showStatus("portfolioStatus", "Delete failed", "error");
+      }
+    }
+
+    async function deleteService(id) {
+      try {
+        await db.collection("services").doc(id).delete();
+        showStatus("serviceStatus", "Service deleted");
+      } catch {
+        showStatus("serviceStatus", "Delete failed", "error");
+      }
+    }
+
+    async function seedDefaults() {
+      try {
+        await db.collection("settings").doc("main").set(defaultSiteSettings);
+
+        const servicesSnap = await db.collection("services").get();
+        for (const doc of servicesSnap.docs) await doc.ref.delete();
+
+        const portfolioSnap = await db.collection("portfolio").get();
+        for (const doc of portfolioSnap.docs) await doc.ref.delete();
+
+        const testimonialsSnap = await db.collection("testimonials").get();
+        for (const doc of testimonialsSnap.docs) await doc.ref.delete();
+
+        for (const item of defaultServices) {
+          await db.collection("services").add({
+            ...item,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        }
+
+        for (const item of defaultPortfolio) {
+          await db.collection("portfolio").add({
+            ...item,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        }
+
+        for (const item of defaultTestimonials) {
+          await db.collection("testimonials").add({
+            ...item,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        }
+
+        showStatus("adminGlobalStatus", "Default data loaded");
+      } catch {
+        showStatus("adminGlobalStatus", "Default load failed", "error");
+      }
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const settingsDoc = await db.collection("settings").doc("main").get();
+      const settings = settingsDoc.exists ? settingsDoc.data() : defaultSiteSettings;
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const service = document.getElementById("service").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const formMessage =
+        `Hi ${settings.brandName},%0A%0A` +
+        `My Name: ${name}%0A` +
+        `My Email: ${email}%0A` +
+        `Service Needed: ${service}%0A` +
+        `Project Details: ${message}`;
+
+      window.open(`https://wa.me/${settings.whatsappNumber}?text=${formMessage}`, "_blank");
+    });
+
+    updateAdminUI();
+  </script>
+</body>
+</html>
